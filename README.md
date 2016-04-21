@@ -37,5 +37,4 @@ When the repository is open for contributions, please check the issues section f
 ## Preview
 
 **Project Lyre** as of April 21, 2016 8:37 AM 
-
-[[ lyre.com_lamp_stack/public/img/Early-Look_Screen_Shot.png ]]
+![Early Preview](/public/img/Early-Look_Screen_Shot.png)
