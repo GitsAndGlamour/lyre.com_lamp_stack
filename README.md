@@ -1,4 +1,4 @@
-![travis-build](https://api.travis-ci.org/ritenv/lyre.svg)
+
 
     __    _  _  ____  ____
     (  )  ( \/ )(  _ \(  __)
