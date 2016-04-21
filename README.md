@@ -33,3 +33,9 @@ When the repository is open for contributions, please check the issues section f
 ## Background
 
 **Project Lyre** is being developed by [@omiewalls](http://twitter.com/@omiewalls) as an academic project. There are other versions being made, one under the MEAN stack, LAMP stack (with Angular for routing), and lastly one using Java under the Android SDK. 
+
+## Preview
+
+**Project Lyre** as of April 21, 2016 8:37 AM 
+
+[[ lyre.com_lamp_stack/public/img/Early-Look_Screen_Shot.png ]]
