@@ -7,46 +7,103 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Task;
-use App\Repositories\TaskRepository;
+use App\Forum;
+use App\Repositories\ForumRepository;
 
-class TaskController extends Controller
+class ForumController extends Controller
 {
     /**
-     * The task repository instance.
+     * The forum repository instance.
      *
-     * @var TaskRepository
+     * @var ForumRepository
      */
-    protected $tasks;
+    protected $forums;
 
     /**
      * Create a new controller instance.
      *
-     * @param  TaskRepository  $tasks
+     * @param  ForumRepository  $forums
      * @return void
      */
-    public function __construct(TaskRepository $tasks)
+    public function __construct(ForumRepository $forums)
     {
         $this->middleware('auth');
 
-        $this->tasks = $tasks;
+        $this->forums = $forums;
     }
 
     /**
-     * Display a list of all of the user's task.
+     * Display a list of all of the user's forum.
      *
      * @param  Request  $request
      * @return Response
      */
     public function index(Request $request)
     {
-        return view('tasks.index', [
-            'tasks' => $this->tasks->forUser($request->user()),
+        return view('forums.index', [
+            'forums' => $this->forums->forUser($request->user()),
         ]);
     }
-
     /**
-     * Create a new task.
+     * Display a list of all of the user's forum.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function explore(Request $request)
+    {
+        return view('forums.explore', [
+            'forums' => $this->forums->forUser($request->user()),
+        ]);
+    }    /**
+         * Display a list of all of the user's forum.
+         *
+         * @param  Request  $request
+         * @return Response
+         */
+        public function recent(Request $request)
+        {
+            return view('forums.recent', [
+                'forums' => $this->forums->forUser($request->user()),
+            ]);
+        }    /**
+             * Display a list of all of the user's forum.
+             *
+             * @param  Request  $request
+             * @return Response
+             */
+            public function open(Request $request)
+            {
+                return view('forums.open', [
+                    'forums' => $this->forums->forUser($request->user()),
+                ]);
+            }
+            /**
+             * Display a list of all of the user's forum.
+             *
+             * @param  Request  $request
+             * @return Response
+             */
+            public function trending(Request $request)
+            {
+                return view('forums.trending', [
+                    'forums' => $this->forums->forUser($request->user()),
+                ]);
+            }
+            /**
+             * Display a list of all of the user's forum.
+             *
+             * @param  Request  $request
+             * @return Response
+             */
+            public function post(Request $request)
+            {
+                return view('forums.post', [
+                    'forums' => $this->forums->forUser($request->user()),
+                ]);
+            }
+    /**
+     * Create a new forum.
      *
      * @param  Request  $request
      * @return Response
@@ -57,26 +114,26 @@ class TaskController extends Controller
             'name' => 'required|max:255',
         ]);
 
-        $request->user()->tasks()->create([
+        $request->user()->forums()->create([
             'name' => $request->name,
         ]);
 
-        return redirect('/tasks');
+        return redirect('/forums');
     }
 
     /**
-     * Destroy the given task.
+     * Destroy the given forum.
      *
      * @param  Request  $request
-     * @param  Task  $task
+     * @param  Forum  $forum
      * @return Response
      */
-    public function destroy(Request $request, Task $task)
+    public function destroy(Request $request, Forum $forum)
     {
-        $this->authorize('destroy', $task);
+        $this->authorize('destroy', $forum);
 
-        $task->delete();
+        $forum->delete();
 
-        return redirect('/tasks');
+        return redirect('/forums');
     }
 }

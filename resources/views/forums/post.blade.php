@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
       <div clas="row">
-        Forums - Main
+        Forums - Post
   </div>
 </div>
 @endsection

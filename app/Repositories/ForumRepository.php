@@ -15,8 +15,9 @@ class ForumRepository
      */
     public function forUser(User $user)
     {
-        return Forum::where('user_id', $user->id)
-                    ->orderBy('created_at', 'asc')
-                    ->get();
+        return null;
+        // return Forum::where('user_id', $user->id)
+        //             ->orderBy('created_at', 'asc')
+        //             ->get();
     }
 }

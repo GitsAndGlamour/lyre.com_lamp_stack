@@ -21,7 +21,6 @@
 | kernel and includes session state, CSRF protection, and more.
 |
 */
-
 Route::group(['middleware' => ['web']], function () {
 
     Route::get('/', function () {
@@ -35,6 +34,38 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/tasks', 'TaskController@index');
     Route::post('/task', 'TaskController@store');
     Route::delete('/task/{task}', 'TaskController@destroy');
+
+    Route::auth();
+
+});
+Route::group(['middleware' => ['web']], function () {
+
+    Route::get('/', function () {
+        return view('welcome');
+    })->middleware('guest');
+
+
+    Route::get('/tasks', 'TaskController@index');
+    Route::post('/task', 'TaskController@store');
+    Route::delete('/task/{task}', 'TaskController@destroy');
+
+    Route::get('/courses', 'CourseController@index');
+    Route::get('/courses/{course}', 'CourseController@detail');
+    Route::post('/course', 'CourseController@store');
+
+    Route::get('/forums', 'ForumController@index');
+    Route::get('/forums/explore', 'ForumController@explore');
+    Route::get('/forums/recent', 'ForumController@recent');
+    Route::get('/forums/trending', 'ForumController@trending');
+    Route::get('/forums/open', 'ForumController@open');
+    Route::get('/forums/post', 'ForumController@post');
+
+
+    Route::get('/forums/{forum}', 'ForumController@detail');
+    Route::post('/forum', 'ForumController@store');
+
+
+
 
     Route::auth();
 
